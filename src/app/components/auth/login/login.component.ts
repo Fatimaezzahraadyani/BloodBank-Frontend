@@ -16,5 +16,24 @@ import { RouterLink } from '@angular/router';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  loginData = {
+    email:'',
+    password:'',
+    rememberMe: '',
+
+  };
+  showPassword= false;
+
+  togglePasswordVisibility(): void{
+    this.showPassword = !this.showPassword;
+  }
+
+    onSignIn(): void {
+    console.log('Login form submitted (backend not hooked up yet):', this.loginData);
+    // Vous pouvez ajouter une alerte temporaire pour confirmer la soumission
+    alert('Formulaire soumis ! (Logique backend non connectée)');
+    }
+
+
 
 }

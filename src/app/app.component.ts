@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet ,Router, NavigationEnd} from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CommonModule } from '@angular/common';
@@ -18,4 +18,15 @@ import { CommonModule } from '@angular/common';
 })
 export class AppComponent {
   title = 'Bloodbank-Front';
+  showNavAndFooter : boolean = true;
+
+  constructor(private router : Router){
+    this.router.events.subscribe(event=>{
+      if(event instanceof NavigationEnd){
+        const authRoutes = ['/login','/register', '/forgot-password'];
+        this.showNavAndFooter= !authRoutes.includes(event.urlAfterRedirects)
+      }
+    });
+
+  }
 }
