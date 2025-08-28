@@ -14,7 +14,7 @@ export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     { path: 'admin-dashboard', canActivate:[adminGuard],component : AdminDashboardComponent },
     { path: 'donor-dashboard', component: DonorDashboardComponent},
-    { path : 'admin/reservations', component : ReservationAdminComponent},
+    { path : 'admin/reservations',canActivate:[adminGuard], component : ReservationAdminComponent},
 
     { path: '**', redirectTo: 'login' }
 ];
