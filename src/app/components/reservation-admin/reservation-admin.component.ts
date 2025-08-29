@@ -11,6 +11,24 @@ export interface Reservation {
   statut: string;
 }
 
+export interface Donneur {
+  id: number;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: string;
+  bloodType?: string;
+  phone?: string;
+  address?: string;
+}
+
+export interface CentreCollecte {
+  id: number;
+  name: string;
+  adresse: string;
+  ville: string;
+}
+
 @Component({
   selector: 'app-reservation-admin',
   standalone: true,
