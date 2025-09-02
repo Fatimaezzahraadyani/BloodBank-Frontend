@@ -1,0 +1,61 @@
+<div class="min-h-screen bg-gray-100 p-6 sm:p-10 flex items-center justify-center">
+  <div *ngIf="reservation" class="w-full max-w-2xl bg-white rounded-xl shadow-lg p-8">
+    <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Détails de la réservation</h1>
+    
+    <div class="flex justify-between items-center mb-6 border-b pb-4">
+      <div class="flex flex-col">
+        <span class="text-sm font-semibold text-gray-500">ID de la Réservation</span>
+        <span class="text-xl font-bold text-brand-red">#{{ reservation.id }}</span>
+      </div>
+      <span
+        [ngClass]="{
+          'bg-green-100 text-green-600': reservation.statut === 'Confirmée',
+          'bg-red-100 text-red-600': reservation.statut === 'Annulée',
+          'bg-yellow-100 text-yellow-600': reservation.statut === 'en_attente'
+        }"
+        class="px-4 py-2 text-sm font-bold rounded-full"
+      >
+        {{ reservation.statut }}
+      </span>
+    </div>
+
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-3"><i class="fas fa-user-circle mr-2"></i>Détails du Donneur</h2>
+      <div class="space-y-3 text-gray-700 border p-4 rounded-lg bg-gray-50">
+        <p><strong class="font-semibold">Nom :</strong> {{ reservation.donneur.lastName }} {{ reservation.donneur.firstName }}</p>
+        <p><strong class="font-semibold">Email :</strong> {{ reservation.donneur.email }}</p>
+        <p><strong class="font-semibold">Téléphone :</strong> {{ reservation.donneur.phone }}</p>
+        </div>
+    </div>
+
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-3"><i class="fas fa-hospital-alt mr-2"></i>Centre de Collecte</h2>
+      <div class="space-y-3 text-gray-700 border p-4 rounded-lg bg-gray-50">
+        <p><strong class="font-semibold">Nom :</strong> {{ reservation.centreCollecte.name }}</p>
+        <p><strong class="font-semibold">Adresse :</strong> {{ reservation.centreCollecte.adresse }}, {{ reservation.centreCollecte.ville }}</p>
+      </div>
+    </div>
+
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-3"><i class="fas fa-calendar-alt mr-2"></i>Date et Heure</h2>
+      <div class="space-y-3 text-gray-700 border p-4 rounded-lg bg-gray-50">
+        <p><strong class="font-semibold">Date :</strong> {{ reservation.date }}</p>
+        <p><strong class="font-semibold">Heure :</strong> {{ reservation.heure }}</p>
+      </div>
+    </div>
+
+    <div class="mt-8 text-center">
+      <button
+        [routerLink]="['/admin/reservations']"
+        class="px-6 py-3 bg-gray-500 text-white font-semibold rounded-full shadow-lg 
+               hover:bg-gray-600 transform hover:translate-y-[-2px] transition-all duration-300"
+      >
+        <i class="fas fa-arrow-left mr-2"></i>Retour à la liste
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="!reservation" class="text-center text-gray-500 mt-10">
+    <p>Chargement des détails de la réservation...</p>
+  </div>
+</div>

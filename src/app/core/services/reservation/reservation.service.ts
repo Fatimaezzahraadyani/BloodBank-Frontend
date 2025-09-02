@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Reservation } from '../../../components/reservation-admin/reservation-admin.component';
@@ -14,6 +14,14 @@ export class ReservationService {
   constructor(private http : HttpClient) { }
 
   getReservations(): Observable<Reservation[]> {
-    return this.http.get<Reservation[]>(`${this.apiUrl}/all`);
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({
+      'Authorization' : `Bearer ${token}`
+    });
+    return this.http.get<Reservation[]>(`${this.apiUrl}/all`, {headers});
+  }
+
+    getReservationById(id: number): Observable<Reservation> {
+    return this.http.get<Reservation>(`${this.apiUrl}/${id}`);
   }
 }

@@ -43,11 +43,15 @@ export class LoginComponent {
           localStorage.setItem('userRole', role);
 
 
-          if(role === 'ADMIN'){
-            this.router.navigate(['/admin-dashboard']);
-          }else{
-            this.router.navigate(['/donner-dashboard']);
-          }
+            if (role === 'ADMIN') {
+              this.router.navigate(['/admin-dashboard']);
+            } else if (role === 'DONOR') {
+              this.router.navigate(['/donor-dashboard']);
+            } else {
+              // Gérer d'autres rôles ou une erreur
+              console.error("Rôle inconnu:", role);
+            }
+          
         },
         error: (err)=>{
           console.error('Erreur lors de la connexion :', err);
@@ -55,5 +59,6 @@ export class LoginComponent {
         }
       });
     }
+
 
 }

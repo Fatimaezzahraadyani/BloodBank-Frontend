@@ -5,12 +5,14 @@ import { inject } from '@angular/core';
 export const adminGuard: CanActivateFn = (route, state) => {
 
   const router = inject (Router);
+  
   const role = localStorage.getItem("userRole");
 
-  if(role === 'ADMIN'){
+  if(role  === 'ADMIN'){
     return true;
   }else{
-    router.navigate(['/unauthorized']);
+    console.log("only admin");
+    router.navigate(['/login']);
     return false;
   }
 };
