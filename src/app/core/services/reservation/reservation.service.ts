@@ -20,4 +20,8 @@ export class ReservationService {
     });
     return this.http.get<Reservation[]>(`${this.apiUrl}/all`, {headers});
   }
+
+    getReservationById(id: number): Observable<Reservation> {
+    return this.http.get<Reservation>(`${this.apiUrl}/${id}`);
+  }
 }

@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Routes,RouterModule } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { RegisterComponent } from './components/auth/register/register.component';
@@ -6,6 +6,7 @@ import { adminGuard } from './guards/admin.guard';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { DonorDashboardComponent } from './components/donor-dashboard/donor-dashboard.component';
 import { ReservationAdminComponent } from './components/reservation-admin/reservation-admin.component';
+import { ReservationDetailsComponent } from './components/reservation-details/reservation-details.component';
 
 export const routes: Routes = [
     { path: '', component: DashboardComponent }, 
@@ -24,6 +25,9 @@ export const routes: Routes = [
         canActivate:[adminGuard], 
         component : ReservationAdminComponent
     },
+     { path: 'reservations/:id',
+        canActivate : [adminGuard],
+        component: ReservationDetailsComponent },
 
     { path: '**', redirectTo: 'login' }
 ];
