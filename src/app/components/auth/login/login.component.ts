@@ -38,11 +38,23 @@ export class LoginComponent {
           console.log('Réponse de backend:', response);
           const token = response.token;
           const role = response.role;
+          const userId = response.id;
+
 
           localStorage.setItem('authToken', token);
           localStorage.setItem('userRole', role);
 
-
+           //  Récupérer l'utilisateur courant après login
+          this.authService.getCurrentUser().subscribe({
+        next: (user) => {
+          console.log("Utilisateur courant :", user);
+          localStorage.setItem('userId', String(user.id)); // stockage du userId
+        },
+        error: (err) => {
+          console.error("Erreur récupération utilisateur :", err);
+        }
+      });
+          //  Redirection selon le rôle
             if (role === 'ADMIN') {
               this.router.navigate(['/admin-dashboard']);
             } else if (role === 'DONOR') {
@@ -59,6 +71,8 @@ export class LoginComponent {
         }
       });
     }
+
+
 
 
 }

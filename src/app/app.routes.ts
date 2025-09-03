@@ -7,6 +7,7 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { DonorDashboardComponent } from './components/donor-dashboard/donor-dashboard.component';
 import { ReservationAdminComponent } from './components/reservation-admin/reservation-admin.component';
 import { ReservationDetailsComponent } from './components/reservation-details/reservation-details.component';
+import { MesReservationsDonorComponent } from './components/mes-reservations-donor/mes-reservations-donor.component';
 
 export const routes: Routes = [
     { path: '', component: DashboardComponent }, 
@@ -14,12 +15,14 @@ export const routes: Routes = [
     { path: 'register', component: RegisterComponent},
     { path: 'dashboard', component: DashboardComponent },
     
+    
     { path: 'admin-dashboard', 
         canActivate:[adminGuard],
         component : AdminDashboardComponent 
     },
 
     { path: 'donor-dashboard', component: DonorDashboardComponent},
+    {path : 'mes-reservation', component : MesReservationsDonorComponent},
 
     { path : 'admin/reservations',
         canActivate:[adminGuard], 

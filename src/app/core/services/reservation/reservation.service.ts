@@ -10,6 +10,7 @@ export class ReservationService {
 
 
   private apiUrl = 'http://localhost:8082/api/rendezVous'; 
+  private Url = 'http://localhost:8082/api/rendezVous/donneur';
 
   constructor(private http : HttpClient) { }
 
@@ -24,4 +25,13 @@ export class ReservationService {
     getReservationById(id: number): Observable<Reservation> {
     return this.http.get<Reservation>(`${this.apiUrl}/${id}`);
   }
+getReservationsByDonorId(donorId: number): Observable<Reservation[]> {
+  const token = localStorage.getItem('authToken');
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+  return this.http.get<Reservation[]>(`${this.Url}${donorId}`, { headers });
+}
+
+
 }

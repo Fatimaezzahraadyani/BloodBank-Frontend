@@ -1,16 +1,28 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
+export interface User {
+  id: number;
+  email: string;
+  role: string;
+  firstName?: string;
+  lastName?: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
+
+
+
 export class AuthService {
 
   //url de base d'auth backend Spring Security
   private apiUrl = 'http://localhost:8082/api/auth';
   private baseUrl = 'http://localhost:8082/api/auth/register';
+  private Url = 'http://localhost:8082/api/donneurs'
 
   //cle de token
   private tokenKey = 'authToken';
@@ -29,7 +41,37 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}`, data);
   }
 
-  
+
+  getUserRole(): string | null {
+  return localStorage.getItem('userRole');
+}
+
+
+  //  INFOS UTILISATEUR COURANT 
+
+  getCurrentUser(): Observable<User> {
+    const token = this.getToken();
+    if (!token) {
+      throw new Error('Aucun token trouvé');
+    }
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get<User>(`${this.Url}/me`, { headers });
+  }
+
+
+}
+
+
+
+
+
+
+
+
  /*register(userData: any): Observable<any> {
     // 1. Envoie une requête POST à l'API d'enregistrement.
     // L'URL complète est `${this.apiUrl}/register`.
@@ -67,6 +109,3 @@ export class AuthService {
       })
     );
   }*/
-
-
-}

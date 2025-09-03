@@ -1,0 +1,58 @@
+<div class="min-h-screen bg-gray-100 p-6 sm:p-10">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+    <i class="fas fa-list-alt text-brand-red mr-2"></i>Liste des Réservations
+  </h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div
+      *ngFor="let reservation of reservations"
+      class="bg-white rounded-2xl shadow-xl p-6 border border-gray-200 
+             transform hover:scale-105 hover:shadow-2xl transition-all duration-300"
+    >
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-2xl font-semibold text-gray-800">
+          Réservation <span class="text-brand-red">#{{ reservation.id }}</span>
+        </h2>
+       <span
+  [ngClass]="{
+    'bg-green-100 text-green-600': reservation.statut === 'CONFIRMEE',
+    'bg-red-100 text-red-600': reservation.statut === 'ANNULEE',
+    'bg-yellow-100 text-yellow-600': reservation.statut === 'EN_ATTENTE'
+  }"
+>
+  {{ reservation.statut }}
+</span>
+
+      </div>
+
+      <div class="space-y-3 text-gray-700">
+        <div class="flex items-center gap-2">
+          <i class="far fa-calendar-alt text-lg text-gray-500"></i>
+          <p><strong>Date :</strong> {{ reservation.date }}</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <i class="far fa-clock text-lg text-gray-500"></i>
+          <p><strong>Heure :</strong> {{ reservation.heure }}</p>
+        </div>
+        <div class="flex items-center gap-2">
+            <i class="fas fa-hospital text-lg text-gray-500"></i>
+            <p><strong>Centre :</strong> {{ reservation.centreCollecte?.name }}</p>
+        </div>
+      </div>
+      
+      <div class="mt-6 text-center">
+        <a
+          [routerLink]="['/reservations', reservation.id]"
+          class="w-full px-6 py-3 bg-brand-red text-white font-semibold rounded-full shadow-lg 
+                 hover:bg-red-700 transform hover:translate-y-[-2px] transition-all duration-300"
+        >
+          Voir les détails <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+    
+    <div *ngIf="reservations.length === 0" class="col-span-full text-center text-gray-600">
+      <p>Aucune réservation trouvée pour ce donneur. 😔</p>
+    </div>
+  </div>
+</div>

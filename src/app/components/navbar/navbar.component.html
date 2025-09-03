@@ -10,7 +10,22 @@
         <a href="#" class="hover:text-brand-red transition-colors">Home</a>
         <a href="#" class="hover:text-brand-red transition-colors">About</a>
         <a href="#" class="hover:text-brand-red transition-colors">Blood Bank</a>
-        <a href="#" class="hover:text-brand-red transition-colors">Hospitals</a>
+<!-- Pour le donor -->
+<a href=# *ngIf="userRole === 'DONOR'" 
+   [routerLink]="['/mes-reservation']" 
+   class="hover:text-brand-red transition-colors">
+   Mes Réservations
+</a>
+
+<!-- Pour l’admin -->
+<a *ngIf="userRole === 'ADMIN'" 
+   [routerLink]="['/admin/reservations']" 
+   routerLinkActive="text-brand-red font-bold"
+   class="hover:text-brand-red transition-colors">
+   Reservations
+</a>
+
+
         <a href="#" class="hover:text-brand-red transition-colors">Eligibility</a>
         <a href="#" class="hover:text-brand-red transition-colors">Contact</a>
         <a href="#" class="hover:text-brand-red transition-colors">FAQ</a>
