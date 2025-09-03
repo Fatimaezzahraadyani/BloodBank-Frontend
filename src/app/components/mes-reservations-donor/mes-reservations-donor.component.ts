@@ -13,36 +13,30 @@ import { ActivatedRoute } from '@angular/router';
 export class MesReservationsDonorComponent implements OnInit {
 
   reservations : any [] = [];
-  donorId! : number ;
 
   constructor(
-    private reservationService : ReservationService,
-    private route : ActivatedRoute
-  ){}
+    private reservationService : ReservationService  ){}
 
  
-  ngOnInit(): void {
-  const storedUser = localStorage.getItem('userId');
-  if (storedUser) {
-    this.donorId = +storedUser;
-    this.loadReservations();
-  } else {
-    console.warn("Aucun userId trouvé dans localStorage");
+   ngOnInit(): void {
+    const donorId = localStorage.getItem('userId'); // récupère l'ID stocké
+    if (donorId) {
+      this.reservationService.getReservationsByDonorId(Number(donorId)).subscribe({
+        next: (data) => {
+          this.reservations = data;
+          console.log("Réservations du donneur :", data);
+        },
+        error: (err) => {
+          console.error("Erreur lors de la récupération :", err);
+        }
+      });
+    } else {
+      console.error("Aucun userId trouvé dans localStorage");
+    }
   }
-}
 
 
 
-  loadReservations(): void {
-    this.reservationService.getReservationsByDonorId(this.donorId).subscribe({
-      next: (data) => {
-        this.reservations = data;
-      },
-      error: (err) => {
-        console.error('Erreur chargement reservations:', err);
-      }
-    });
-  }
 
 
 }

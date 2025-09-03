@@ -8,6 +8,7 @@ import { DonorDashboardComponent } from './components/donor-dashboard/donor-dash
 import { ReservationAdminComponent } from './components/reservation-admin/reservation-admin.component';
 import { ReservationDetailsComponent } from './components/reservation-details/reservation-details.component';
 import { MesReservationsDonorComponent } from './components/mes-reservations-donor/mes-reservations-donor.component';
+import { donorGuard } from './guards/donor.guard';
 
 export const routes: Routes = [
     { path: '', component: DashboardComponent }, 
@@ -22,7 +23,7 @@ export const routes: Routes = [
     },
 
     { path: 'donor-dashboard', component: DonorDashboardComponent},
-    {path : 'mes-reservation', component : MesReservationsDonorComponent},
+    {path : 'mes-reservation',canActivate:[donorGuard], component : MesReservationsDonorComponent},
 
     { path : 'admin/reservations',
         canActivate:[adminGuard], 
