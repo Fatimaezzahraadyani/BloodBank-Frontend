@@ -9,12 +9,14 @@ import { ReservationAdminComponent } from './components/reservation-admin/reserv
 import { ReservationDetailsComponent } from './components/reservation-details/reservation-details.component';
 import { MesReservationsDonorComponent } from './components/mes-reservations-donor/mes-reservations-donor.component';
 import { donorGuard } from './guards/donor.guard';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 export const routes: Routes = [
     { path: '', component: DashboardComponent }, 
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent},
     { path: 'dashboard', component: DashboardComponent },
+    {path : 'about-us', component : AboutUsComponent},
     
     
     { path: 'admin-dashboard', 

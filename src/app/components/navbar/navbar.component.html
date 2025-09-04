@@ -8,10 +8,10 @@
 
       <nav class="hidden lg:flex items-center space-x-6 text-brand-dark font-medium">
         <a href="#" class="hover:text-brand-red transition-colors">Home</a>
-        <a href="#" class="hover:text-brand-red transition-colors">About</a>
+        <a [routerLink] = "['/about-us']" class="hover:text-brand-red transition-colors">About</a>
         <a href="#" class="hover:text-brand-red transition-colors">Blood Bank</a>
 <!-- Pour le donor -->
-<a href=# *ngIf="userRole === 'DONOR'" 
+<a *ngIf="userRole === 'DONOR'" 
    [routerLink]="['/mes-reservation']" 
    class="hover:text-brand-red transition-colors">
    Mes Réservations
