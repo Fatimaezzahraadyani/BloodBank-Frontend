@@ -10,6 +10,7 @@ import { ReservationDetailsComponent } from './components/reservation-details/re
 import { MesReservationsDonorComponent } from './components/mes-reservations-donor/mes-reservations-donor.component';
 import { donorGuard } from './guards/donor.guard';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { MesresrvationDetailsComponent } from './components/mesresrvation-details/mesresrvation-details.component';
 
 export const routes: Routes = [
     { path: '', component: DashboardComponent }, 
@@ -18,22 +19,27 @@ export const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent },
     {path : 'about-us', component : AboutUsComponent},
     
-    
+    //admis
     { path: 'admin-dashboard', 
         canActivate:[adminGuard],
         component : AdminDashboardComponent 
     },
-
-    { path: 'donor-dashboard', component: DonorDashboardComponent},
-    {path : 'mes-reservation',canActivate:[donorGuard], component : MesReservationsDonorComponent},
-
-    { path : 'admin/reservations',
+        { path : 'admin/reservations',
         canActivate:[adminGuard], 
         component : ReservationAdminComponent
     },
      { path: 'reservations/:id',
         canActivate : [adminGuard],
         component: ReservationDetailsComponent },
+
+
+
+    //donors
+    {path: 'donor-dashboard', component: DonorDashboardComponent},
+    {path : 'mes-reservation',canActivate:[donorGuard], component : MesReservationsDonorComponent},
+    {path: 'donor/mes-reservations/:id',canActivate: [donorGuard], component: MesresrvationDetailsComponent},
+
+
 
     { path: '**', redirectTo: 'login' }
 ];
