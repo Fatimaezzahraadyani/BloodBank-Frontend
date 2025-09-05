@@ -11,6 +11,8 @@ import { MesReservationsDonorComponent } from './components/mes-reservations-don
 import { donorGuard } from './guards/donor.guard';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { MesresrvationDetailsComponent } from './components/mesresrvation-details/mesresrvation-details.component';
+import { AjouterReservationComponent } from './components/ajouter-reservation/ajouter-reservation.component';
+import { DonorProfileComponent } from './components/donor-profile/donor-profile.component';
 
 export const routes: Routes = [
     { path: '', component: DashboardComponent }, 
@@ -37,6 +39,9 @@ export const routes: Routes = [
     //donors
     {path: 'donor-dashboard', component: DonorDashboardComponent},
     {path : 'mes-reservation',canActivate:[donorGuard], component : MesReservationsDonorComponent},
+    {path : 'donor/mes-reservations/nouveau', canActivate : [donorGuard], component:AjouterReservationComponent},
+    {path: 'donor/profile/complete' , component: DonorProfileComponent, canActivate: [donorGuard]
+  },
     {path: 'donor/mes-reservations/:id',canActivate: [donorGuard], component: MesresrvationDetailsComponent},
 
 

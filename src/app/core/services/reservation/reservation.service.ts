@@ -10,7 +10,8 @@ export class ReservationService {
 
 
   private apiUrl = 'http://localhost:8082/api/rendezVous'; 
-  private Url = 'http://localhost:8082/api/rendezVous/donneur/';
+  //private Url = 'http://localhost:8082/api/rendezVous/donneur/';
+  //private baseUrl = 'http://localhost:8082/api/rendezVous'
 
   constructor(private http : HttpClient) { }
 
@@ -22,14 +23,17 @@ export class ReservationService {
     return this.http.get<Reservation[]>(`${this.apiUrl}/all`, {headers});
   }
 
-    getReservationById(id: number): Observable<Reservation> {
+    getReservationById(id: number): Observable<any> {
     return this.http.get<Reservation>(`${this.apiUrl}/${id}`);
   }
 
   getReservationsByDonorId(donorId: number): Observable<any[]> {
-  return this.http.get<any[]>(`${this.Url}${donorId}`);
+  return this.http.get<any[]>(`${this.apiUrl}/donneur/${donorId}`);
 }
 
+  ajouterReservation(reservation: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, reservation);
+  }
 
 
 }

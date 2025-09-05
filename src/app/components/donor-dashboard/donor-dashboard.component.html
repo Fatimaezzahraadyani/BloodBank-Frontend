@@ -1,1 +1,20 @@
-<p>donor-dashboard works!</p>
+<div class="p-6">
+  <h1 class="text-3xl font-bold text-gray-800 mb-6">
+    Bienvenue 
+  </h1>
+
+  <div *ngIf="profileIncomplete" class="bg-white rounded-lg shadow-md p-6 mb-6">
+    <h2 class="text-xl font-semibold text-red-600 mb-2">
+      Complétez votre profil de santé
+    </h2>
+    <p class="text-gray-700 mb-4">
+      Votre profil est incomplet. Veuillez le mettre à jour pour maximiser vos chances de trouver une compatibilité.
+    </p>
+    <a [routerLink]="['/donor/profile/complete']"
+       class="inline-block bg-red-600 text-white font-bold py-2 px-4 rounded-lg
+              hover:bg-red-700 transition duration-300">
+      Compléter mon profil
+    </a>
+  </div>
+
+  </div>
