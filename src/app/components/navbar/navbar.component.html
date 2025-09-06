@@ -8,9 +8,24 @@
 
       <nav class="hidden lg:flex items-center space-x-6 text-brand-dark font-medium">
         <a href="#" class="hover:text-brand-red transition-colors">Home</a>
-        <a href="#" class="hover:text-brand-red transition-colors">About</a>
+        <a [routerLink] = "['/about-us']" class="hover:text-brand-red transition-colors">About</a>
         <a href="#" class="hover:text-brand-red transition-colors">Blood Bank</a>
-        <a href="#" class="hover:text-brand-red transition-colors">Hospitals</a>
+<!-- Pour le donor -->
+<a *ngIf="userRole === 'DONOR'" 
+   [routerLink]="['/mes-reservation']" 
+   class="hover:text-brand-red transition-colors">
+   Mes Réservations
+</a>
+
+<!-- Pour l’admin -->
+<a *ngIf="userRole === 'ADMIN'" 
+   [routerLink]="['/admin/reservations']" 
+   routerLinkActive="text-brand-red font-bold"
+   class="hover:text-brand-red transition-colors">
+   Reservations
+</a>
+
+
         <a href="#" class="hover:text-brand-red transition-colors">Eligibility</a>
         <a href="#" class="hover:text-brand-red transition-colors">Contact</a>
         <a href="#" class="hover:text-brand-red transition-colors">FAQ</a>
@@ -30,7 +45,7 @@
         </button>
     </div>
 </div>
-        <a href="#" class="hidden sm:inline-block bg-brand-red text-white font-bold py-2 px-5 rounded-lg hover:bg-brand-red-dark transition-colors">
+        <a [routerLink] = "['/login']" class="hidden sm:inline-block bg-brand-red text-white font-bold py-2 px-5 rounded-lg hover:bg-brand-red-dark transition-colors">
           Donate Now
         </a>
         <button class="lg:hidden text-brand-dark">

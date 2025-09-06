@@ -1,21 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../core/services/auth/auth.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone:true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
 
+  userRole : string | null = null;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService : AuthService) { }
 
     showLogoutMenu: boolean = false;
-
+    
       toggleLogoutMenu() {
     this.showLogoutMenu = !this.showLogoutMenu;
   }
@@ -32,6 +35,10 @@ export class NavbarComponent {
 
     // 3. Hide the menu
     this.showLogoutMenu = false;
+  }
+
+  ngOnInit(): void {
+    this.userRole = localStorage.getItem('userRole');
   }
 
 }

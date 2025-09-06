@@ -1,1 +1,77 @@
-<p>donor-dashboard works!</p>
+<div class="relative min-h-screen bg-gray-100 font-sans">
+  
+  <header class="bg-gradient-to-r from-red-600 to-red-800 text-white rounded-b-3xl shadow-lg p-8 md:p-12 mb-8 flex flex-col md:flex-row items-center justify-between">
+    <div class="text-center md:text-left mb-4 md:mb-0">
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
+        Tableau de Bord du Donneur
+      </h1>
+      <p class="mt-2 text-xl font-light">
+        Bienvenue, {{ user?.firstName }} ! C'est le moment de faire une différence.
+      </p>
+    </div>
+    <div class="flex items-center space-x-4">
+      <img src="https://via.placeholder.com/60" alt="Avatar de l'utilisateur" class="rounded-full border-4 border-white shadow-md w-16 h-16 md:w-20 md:h-20">
+    </div>
+  </header>
+  
+  <main class="container mx-auto px-4 md:px-8">
+    
+    <div *ngIf="profileIncomplete" class="col-span-1 md:col-span-3 mb-8 animate-fade-in-down">
+      <div class="bg-yellow-100 border-2 border-yellow-400 text-yellow-800 rounded-xl shadow-md p-6 flex flex-col md:flex-row items-center justify-between">
+        <div class="flex items-center space-x-4 mb-4 md:mb-0">
+          <svg class="h-10 w-10 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.487 0l5.58 9.92c.765 1.36-.217 3.099-1.743 3.099H4.42c-1.526 0-2.508-1.739-1.743-3.099l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+          </svg>
+          <div>
+            <h2 class="text-2xl font-bold">Votre profil est incomplet</h2>
+            <p class="text-lg">Veuillez le compléter pour débloquer toutes les fonctionnalités et nous aider à vous connecter aux patients.</p>
+          </div>
+        </div>
+        <a [routerLink]="['/donor/profile/complete']"
+           class="bg-yellow-500 text-white font-bold py-3 px-6 rounded-full shadow-md
+                  hover:bg-yellow-600 transition duration-300 transform hover:scale-105">
+          <i class="fas fa-arrow-right mr-2"></i> Compléter mon profil
+        </a>
+      </div>
+    </div>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:translate-y-2 transition duration-300 border-t-4 border-red-500">
+        <i class="fas fa-user-circle text-6xl text-red-500 mb-4"></i>
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Mon Profil</h3>
+        <p class="text-gray-600">
+          Gérez vos informations personnelles et de santé pour une expérience de don personnalisée.
+        </p>
+        <a [routerLink]="['/donor/profile/complete']"
+           class="mt-4 inline-block text-red-600 font-bold hover:underline transition-colors duration-300">
+          Voir les détails
+        </a>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:translate-y-2 transition duration-300 border-t-4 border-blue-500">
+        <i class="fas fa-calendar-alt text-6xl text-blue-500 mb-4"></i>
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Mes rendez-vous</h3>
+        <p class="text-gray-600">
+          Gérez, consultez ou annulez vos rendez-vous de don de sang en un clic.
+        </p>
+        <a [routerLink]="['/donor/mes-reservations/nouveau']"
+           class="mt-4 inline-block text-blue-600 font-bold hover:underline transition-colors duration-300">
+          Réserver un don
+        </a>
+      </div>
+
+      <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:translate-y-2 transition duration-300 border-t-4 border-green-500">
+        <i class="fas fa-heartbeat text-6xl text-green-500 mb-4"></i>
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">Mon impact</h3>
+        <p class="text-gray-600">
+          Chaque don fait une différence. Suivez votre contribution à la communauté.
+        </p>
+        <a href="#" class="mt-4 inline-block text-green-600 font-bold hover:underline transition-colors duration-300">
+          Voir les statistiques
+        </a>
+      </div>
+
+    </div>
+  </main>
+</div>
