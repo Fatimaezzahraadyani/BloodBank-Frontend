@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ReservationService } from '../../core/services/reservation/reservation.service';
+import { ReservationService } from '../../../core/services/reservation/reservation.service';
 import { ActivatedRoute, RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DonorServiceService } from '../../core/services/donor/donor-service.service';
+import { DonorServiceService } from '../../../core/services/donor/donor-service.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ProfileStateService } from '../../../core/services/profile-state/profile-state.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-donor-profile',
@@ -14,7 +16,11 @@ export class DonorProfileComponent implements OnInit{
   profileData: any = {};
   donorId: number =0;
 
-  constructor(private donorService : DonorServiceService){}
+  constructor(
+    private donorService : DonorServiceService,
+    private profilStateSrice : ProfileStateService,
+    private router : Router
+  ){}
 
   ngOnInit(): void {
     //give connected user
@@ -39,15 +45,20 @@ export class DonorProfileComponent implements OnInit{
   }
 
   onSubmit ():void{
-    this.donorService.updateProfile(this.donorId, this.profileData).subscribe({
-      next: (response)=>{
-        alert('Profile mis à jour avec succès !');
-      },
-      error: (err)=>{
-        console.log('Error updating profile:', err);
-        alert('échec de la mise à jour du profile')
-      }
-    });
+        if (this.donorId && this.profileData) {
+      this.donorService.updateProfile(this.donorId, this.profileData).subscribe({
+        next: (response) => {
+          alert('Profil mis à jour avec succès !');
+          // Mettez à jour le statut du profil dans le service partagé
+          this.profilStateSrice.updateProfilStatus(true); 
+          this.router.navigate(['/donor-dashboard']);
+        },
+        error: (err) => {
+        console.error('Echec de la mise à jour',err)
+        }
+      });
+    }
+
   }
 
 }
