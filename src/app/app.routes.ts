@@ -12,6 +12,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { MesReservationsDonorComponent } from './components/Donor/mes-reservations-donor/mes-reservations-donor.component';
 import { AjouterReservationComponent } from './components/Donor/ajouter-reservation/ajouter-reservation.component';
 import { DonorProfileComponent } from './components/Donor/donor-profile/donor-profile.component';
+import { MesresrvationDetailsComponent } from './components/Donor/mesresrvation-details/mesresrvation-details.component';
 
 export const routes: Routes = [
     { path: '', component: DashboardComponent }, 
@@ -41,7 +42,7 @@ export const routes: Routes = [
     {path : 'donor/mes-reservations/nouveau', canActivate : [donorGuard], component:AjouterReservationComponent},
     {path: 'donor/profile/complete' , component: DonorProfileComponent, canActivate: [donorGuard]
   },
-    {path: 'donor/mes-reservations/:id',canActivate: [donorGuard], component: MesReservationsDonorComponent},
+    {path: 'donor/mes-reservations/:id',canActivate: [donorGuard], component:MesresrvationDetailsComponent},
 
 
 

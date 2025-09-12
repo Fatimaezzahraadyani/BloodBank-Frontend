@@ -2,22 +2,18 @@
   <div *ngIf="reservation" class="w-full max-w-2xl bg-white rounded-xl shadow-lg p-8">
     <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">Détails de la réservation</h1>
     
-    <div class="flex justify-between items-center mb-6 border-b pb-4">
-      <div class="flex flex-col">
-        <span class="text-sm font-semibold text-gray-500">ID de la Réservation</span>
-        <span class="text-xl font-bold text-brand-red">#{{ reservation.id }}</span>
-      </div>
-      <span
+<div class="flex justify-between items-center mb-6 border-b pb-4">
+    <span
         [ngClass]="{
-          'bg-green-100 text-green-600': reservation.statut === 'Confirmée',
-          'bg-red-100 text-red-600': reservation.statut === 'Annulée',
-          'bg-yellow-100 text-yellow-600': reservation.statut === 'en_attente'
+          'bg-green-100 text-green-600': reservation.statut === 'CONFIRMÉ',
+          'bg-red-100 text-red-600': reservation.statut === 'REFUSÉ',
+          'bg-yellow-100 text-yellow-600': reservation.statut === 'EN_ATTENTE'
         }"
         class="px-4 py-2 text-sm font-bold rounded-full"
       >
-        {{ reservation.statut }}
-      </span>
-    </div>
+      {{ reservation.statut }}
+    </span>
+</div>
 
     <div class="mb-6">
       <h2 class="text-xl font-semibold text-gray-800 mb-3"><i class="fas fa-user-circle mr-2"></i>Détails du Donneur</h2>

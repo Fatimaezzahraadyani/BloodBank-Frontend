@@ -6,10 +6,16 @@ import { CommonModule } from '@angular/common';
 import { ProfileStateService } from '../../../core/services/profile-state/profile-state.service';
 import { Subscription } from 'rxjs';
 
+// the Font Awesome imports
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { faUserCircle, faCalendarAlt, faHeartbeat, faExclamationTriangle, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
+
 @Component({
   selector: 'app-donor-dashboard',
   standalone:true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, FontAwesomeModule ],
   templateUrl: './donor-dashboard.component.html',
   styleUrl: './donor-dashboard.component.css'
 })
@@ -22,8 +28,12 @@ export class DonorDashboardComponent implements OnInit, OnDestroy{
   constructor(
     private authService : AuthService, 
     private donorService : DonorServiceService,
-    private profileStateService : ProfileStateService
-  ){}
+    private profileStateService : ProfileStateService,
+    private library: FaIconLibrary
+  ){
+        library.addIcons(faUserCircle, faCalendarAlt, faHeartbeat, faExclamationTriangle, faArrowRight);
+
+  }
 
 
   ngOnInit(): void {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReservationService } from '../../core/services/reservation/reservation.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReservationCenter,ReservationD,ReservationDonor } from '../../core/services/reservation/reservation.service';
 
 export interface Reservation {
   id: number;
@@ -14,7 +15,7 @@ export interface Reservation {
 
 
 export interface Donneur {
-  id: number;
+  id: number ;
   firstName: string;
   lastName: string;
   email: string;
@@ -43,6 +44,7 @@ export class ReservationAdminComponent implements OnInit {
   reservations: Reservation[] = [];
 
   constructor(private reservationService: ReservationService) {}
+
 
   ngOnInit(): void {
     this.reservationService.getReservations().subscribe({

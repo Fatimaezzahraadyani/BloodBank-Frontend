@@ -1,1 +1,59 @@
-<p>admin-dashboard works!</p>
+    <header class="bg-gradient-to-r from-red-600 to-red-800 text-white rounded-b-3xl shadow-lg p-8 md:p-12 mb-8 flex flex-col md:flex-row items-center justify-between">
+      <div class="text-center md:text-left mb-4 md:mb-0">
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
+          Tableau de Bord Administrateur
+        </h1>
+        <p class="mt-2 text-xl font-light">
+          Gérez la banque de sang avec efficacité.
+        </p>
+      </div>
+      <div class="flex items-center space-x-4">
+        <!-- Image de l'administrateur -->
+        <img src="https://placehold.co/80x80/d9534f/ffffff?text=Admin" alt="Avatar de l'administrateur" class="rounded-full border-4 border-white shadow-md w-16 h-16 md:w-20 md:h-20">
+      </div>
+    </header>
+
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <!-- Carte Donateurs -->
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:translate-y-2 transition duration-300 border-t-4 border-red-500">
+          <div class="text-red-500 text-6xl mb-4">
+            <!-- Icône Donateurs (SVG) -->
+            <svg class="mx-auto w-16 h-16" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Total Donateurs</h3>
+          <p class="text-3xl font-bold text-red-600">845</p>
+          <p class="text-gray-600 mt-2">Donateurs enregistrés.</p>
+          <a href="#" class="mt-4 inline-block bg-red-600 text-white font-bold py-2 px-4 rounded-full shadow-md hover:bg-red-700 transition duration-300">
+            Gérer les donateurs
+          </a>
+        </div>
+
+        <!-- Carte Réservations -->
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:translate-y-2 transition duration-300 border-t-4 border-blue-500">
+          <div class="text-blue-500 text-6xl mb-4">
+            <!-- Icône Réservations (SVG) -->
+            <svg class="mx-auto w-16 h-16" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Rendez-vous Prévus</h3>
+          <p class="text-3xl font-bold text-blue-600">42</p>
+          <p class="text-gray-600 mt-2">Rendez-vous pour la semaine.</p>
+          <a  [routerLink]="['/admin/reservations']" class="mt-4 inline-block bg-blue-600 text-white font-bold py-2 px-4 rounded-full shadow-md hover:bg-blue-700 transition duration-300">
+            Gérer les réservations
+          </a>
+        </div>
+
+        <!-- Carte Centres de Collecte -->
+        <div class="bg-white rounded-xl shadow-lg p-6 text-center transform hover:translate-y-2 transition duration-300 border-t-4 border-green-500">
+          <div class="text-green-500 text-6xl mb-4">
+            <!-- Icône Centres (SVG) -->
+            <svg class="mx-auto w-16 h-16" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 2a1 1 0 00-1 1v1.5a1 1 0 01-2 0V3a1 1 0 00-2 0v1.5a1 1 0 01-2 0V3a1 1 0 00-1-1zm1 14v1a1 1 0 001 1h4a1 1 0 001-1v-1h-6zm-1-8a1 1 0 00-1 1v2a1 1 0 002 0v-2a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Centres de Collecte</h3>
+          <p class="text-3xl font-bold text-green-600">7</p>
+          <p class="text-gray-600 mt-2">Centres opérationnels.</p>
+           <a href="#" class="mt-4 inline-block bg-green-600 text-white font-bold py-2 px-4 rounded-full shadow-md hover:bg-green-700 transition duration-300">
+            Gérer les centres
+          </a>
+        </div>
+      </div>
