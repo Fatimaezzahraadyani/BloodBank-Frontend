@@ -8,4 +8,25 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @tailwind components;
 @tailwind utilities;
 
+
+
+/* Thème clair (par défaut) */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+/* Thème sombre */
+.dark-theme {
+  --bg-color: #121212;
+  --text-color: #ffffff;
+}
+
+/* Utilisation des variables */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+
 /* Le reste de votre CSS global */
