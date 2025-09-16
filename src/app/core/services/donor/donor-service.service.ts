@@ -18,6 +18,19 @@ export interface DonorProfile{
   chirurgiesRecentes: boolean | null;
 
 }
+
+export interface DonorProfileUpdateDto {
+  bloodType: string | null;
+  birthdate: string | null;
+  weight: number | null;
+  maladieHistory: string | null;
+  phone: string | null;
+  address: string | null;
+  maladiesChroniques: string | null;
+  priseDeMedicaments: boolean | null;
+  chirurgiesRecentes: boolean | null;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,7 +44,7 @@ export class DonorServiceService {
     return this.http.get<DonorProfile>(`${this.apiUrl}/${donorId}/profile`);
   }
 
-  updateProfile(donorId: number, profileData: any): Observable<DonorProfile>{
-    return this.http.put<DonorProfile>(`${this.apiUrl}/${donorId}/profile`, profileData)
+  updateProfile(donorId: number, updateDto: DonorProfileUpdateDto): Observable<DonorProfile> {
+    return this.http.put<DonorProfile>(`${this.apiUrl}/${donorId}/profile`, updateDto);
   }
 }

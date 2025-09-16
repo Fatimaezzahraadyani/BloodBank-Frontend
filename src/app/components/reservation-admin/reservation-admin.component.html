@@ -11,13 +11,13 @@
     >
       <div class="flex justify-between items-center mb-4">
         <h2 class="text-2xl font-semibold text-gray-800">
-          Réservation <span class="text-brand-red">#{{ reservation.id }}</span>
+          Réservation <span class="text-brand-red"></span>
         </h2>
         <span
           [ngClass]="{
-            'bg-green-100 text-green-600': reservation.statut === 'Confirmée',
-            'bg-red-100 text-red-600': reservation.statut === 'Annulée',
-            'bg-yellow-100 text-yellow-600': reservation.statut === 'En attente'
+            'bg-green-100 text-green-600': reservation.statut === 'CONFIRMÉ',
+            'bg-red-100 text-red-600': reservation.statut === 'REFUSÉ',
+            'bg-yellow-100 text-yellow-600': reservation.statut === 'EN_ATTENTE'
           }"
           class="px-3 py-1 text-sm font-bold rounded-full"
         >

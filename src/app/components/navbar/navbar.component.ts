@@ -15,12 +15,14 @@ export class NavbarComponent implements OnInit{
 
   userRole : string | null = null;
 
-  constructor(private router: Router, private authService : AuthService) { }
+  constructor(private router: Router, public authService : AuthService) { }
 
     showLogoutMenu: boolean = false;
     
       toggleLogoutMenu() {
-    this.showLogoutMenu = !this.showLogoutMenu;
+      
+        this.showLogoutMenu = !this.showLogoutMenu;
+        
   }
 
     logout() {
@@ -40,5 +42,7 @@ export class NavbarComponent implements OnInit{
   ngOnInit(): void {
     this.userRole = localStorage.getItem('userRole');
   }
+
+     
 
 }

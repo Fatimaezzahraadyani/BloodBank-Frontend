@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ReservationService } from '../../core/services/reservation/reservation.service';
+import { ReservationService } from '../../../core/services/reservation/reservation.service';
 import { Router } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CentreCollecte } from '../reservation-admin/reservation-admin.component';
-import { CentreCollecteService } from '../../core/services/centreCollecte/centre-collecte.service';
+import { CentreCollecte } from '../../reservation-admin/reservation-admin.component';
+import { CentreCollecteService } from '../../../core/services/centreCollecte/centre-collecte.service';
 
 @Component({
   selector: 'app-ajouter-reservation',

@@ -4,14 +4,14 @@
     
     <div class="flex justify-between items-center mb-6 border-b pb-4">
       <div class="flex flex-col">
-        <span class="text-sm font-semibold text-gray-500">ID de la Réservation</span>
-        <span class="text-xl font-bold text-brand-red">#{{ reservation.id }}</span>
+        <span class="text-sm font-semibold text-gray-500"></span>
+        <span class="text-xl font-bold text-brand-red"></span>
       </div>
       <span
         [ngClass]="{
-          'bg-green-100 text-green-600': reservation.statut === 'Confirmée',
-          'bg-red-100 text-red-600': reservation.statut === 'Annulée',
-          'bg-yellow-100 text-yellow-600': reservation.statut === 'en_attente'
+          'bg-green-100 text-green-600': reservation.statut === 'CONFIRMÉ',
+          'bg-red-100 text-red-600': reservation.statut === 'REFUSÉ',
+          'bg-yellow-100 text-yellow-600': reservation.statut === 'EN_ATTENTE'
         }"
         class="px-4 py-2 text-sm font-bold rounded-full"
       >

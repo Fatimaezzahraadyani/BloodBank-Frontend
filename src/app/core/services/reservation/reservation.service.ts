@@ -3,6 +3,22 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Reservation } from '../../../components/reservation-admin/reservation-admin.component';
 
+export interface ReservationDonor{
+  id : number;
+}
+export interface ReservationCenter{
+  id: number;
+}
+
+export interface ReservationD {
+  id?: number; 
+  date: string;
+  heure: string;
+  donneur: ReservationDonor;
+  centreCollecte: ReservationCenter;
+  statut: 'EN_ATTENTE' | 'CONFIRMÉ' | 'REFUSÉ'; 
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -33,6 +49,14 @@ export class ReservationService {
 
   ajouterReservation(reservation: any): Observable<any> {
     return this.http.post(`${this.apiUrl}`, reservation);
+  }
+  
+    updateReservation(id: number, reservation: Reservation): Observable<Reservation> {
+    return this.http.put<Reservation>(`${this.apiUrl}/updateReservation/${id}`, reservation);
+  }
+
+    deleteReservation(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/delete/${id}`);
   }
 
 

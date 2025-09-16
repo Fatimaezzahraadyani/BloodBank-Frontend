@@ -16,7 +16,6 @@ export interface User {
 })
 
 
-
 export class AuthService {
 
   //url de base d'auth backend Spring Security
@@ -60,6 +59,11 @@ export class AuthService {
     });
 
     return this.http.get<User>(`${this.Url}/me`, { headers });
+  }
+
+   isLoggedIn(): boolean {
+    // Cette fonction vérifie si le token d'authentification est présent
+    return !!localStorage.getItem('authToken');
   }
 
 

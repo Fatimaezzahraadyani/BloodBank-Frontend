@@ -65,8 +65,15 @@
       </div>
 
       <div>
-        <label for="maladieHistory" class="block text-sm font-medium text-gray-700">Historique de maladies (Détails)</label>
-        <textarea id="maladieHistory" [(ngModel)]="profileData.maladieHistory" name="maladieHistory" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md p-2"></textarea>
+        <label for="maladieHistory" class="block text-sm font-medium text-gray-700">Antécédents de Maladies</label>
+        <textarea id="maladieHistory" [(ngModel)]="profileData.maladieHistory" name="maladieHistory" rows="2"
+                  class="mt-1 block w-full border border-gray-300 rounded-md p-2"></textarea>
+      </div>
+
+      <div>
+        <label for="maladiesChroniques" class="block text-sm font-medium text-gray-700">Maladies Chroniques</label>
+        <textarea id="maladiesChroniques" [(ngModel)]="profileData.maladiesChroniques" name="maladiesChroniques" rows="2"
+                  class="mt-1 block w-full border border-gray-300 rounded-md p-2"></textarea>
       </div>
     </div>
 

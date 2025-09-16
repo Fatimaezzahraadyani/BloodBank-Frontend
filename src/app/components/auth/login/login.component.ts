@@ -40,7 +40,6 @@ export class LoginComponent {
           const role = response.role;
           const userId = response.id;
 
-
           localStorage.setItem('authToken', token);
           localStorage.setItem('userRole', role);
 

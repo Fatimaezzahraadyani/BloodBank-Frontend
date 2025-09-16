@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { ReservationService } from '../../core/services/reservation/reservation.service';
+import { ReservationService } from '../../../core/services/reservation/reservation.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
